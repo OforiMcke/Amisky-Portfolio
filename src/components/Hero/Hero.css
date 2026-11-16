@@ -1,0 +1,78 @@
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 7.5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.hero-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent2); }
+
+h1 {
+  font-family: var(--font-head);
+  font-size: clamp(3rem, 7.2vw, 6.2rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.8rem;
+  perspective: 800px;
+}
+
+h1 .line { display: block; transform-origin: left center; }
+.hero-desc { max-width: 510px; font-size: 1.02rem; line-height: 1.8; color: var(--muted); margin-bottom: 2.4rem; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.scroll-indicator {
+  margin-top: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.scroll-line { width: 44px; height: 1px; background: rgba(255, 255, 255, 0.2); position: relative; overflow: hidden; }
+.scroll-line::after { content: ""; position: absolute; inset: 0; background: var(--accent); animation: scan 2s ease-in-out infinite; }
+
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 640px) {
+  #hero { min-height: auto; padding-top: 8rem; padding-bottom: 4rem; }
+  h1 { font-size: clamp(2.8rem, 13vw, 4.5rem); line-height: 0.98; overflow-wrap: anywhere; }
+  .hero-desc { font-size: 0.94rem; }
+  .hero-cta { gap: 0.7rem; }
+  .hero-cta .btn { width: 100%; }
+  .scroll-indicator { margin-top: 2.5rem; }
+}
